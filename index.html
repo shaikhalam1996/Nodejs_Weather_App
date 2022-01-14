@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Weather App</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+       <!--  <script src="C:\Users\Shaikh Mohd Alam\Desktop\Node\weather.js">
+
+        </script> -->
+    </head>
+    <style>
+    .main{
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items:center;
+        overflow: hidden;
+    }
+    .center{
+        width:300px;
+        height: 65vh;
+        background-color: cadetblue;
+        border-radius:20px;
+      
+    }
+
+    #weathericon{
+        text-align: center;
+        font-size: 70px;
+        padding-top: 40px;
+    }
+
+    #info{
+        text-align:center;
+        padding-top: 30px;
+    }
+
+     .fas fa-street-view{
+        font-size:50px;
+        animation: locate 7s linear infinite alternate;
+    }
+
+    #day{
+        font-size: 20px;
+    }
+    </style>
+    <body>
+      <div class="main">
+          <div class="center">
+              <div class="wave-one"></div>
+              <div class="wave-two"></div>
+              <div class="wave-three"></div>
+              <div id="weathericon">
+                <i class="fas fa-sun" style="color:yellow"></i>
+            </div>
+            <div id="info">
+            <h2><i class="fas fa-street-view"></i></h2>
+            <p id="day"> </p>
+            <h2 class="temp">Country:{%city%}</h2>
+                <h2 class="temp">Temperature:{%tempval%}</h2>
+                <h3>Temp_Max:{%tempmin%} </h3>
+                   
+               <h3>Temp_Min:{%tempmax%}</h3>
+        </div>
+          </div>
+      </div>
+      <script>
+          let paraday = document.getElementById("day"); 
+           let weathericon = document.getElementById("weathericon"); 
+           const tempStatus = "{%tempStatus%}";
+           if(tempStatus == "Sunny"){
+               weathericon.innerHTML=<i class="fas fa-sun" style='color:#eccc68;'></i>;
+           }else if(tempStatus=="Clouds"){
+            weathericon.innerHTML=<i class="fas fa-cloud" style='color:#f1f2f6;'></i>;
+
+           }else if(tempStatus=="Rainy"){
+            weathericon.innerHTML=<i class="fas fa-cloud-rain" style='color:#a4b0be;'></i>;
+
+           }else{
+            weathericon.innerHTML=<i class="fas fa-cloud" style='color:#f1f2f6;'></i>;
+
+           }
+          let date = new Date();
+          day = date.getDay();
+                 let month = date.getMonth();
+                 
+           
+            //console.log(edate);
+          function daysOfWeek(){
+            edate= date.getDate();
+
+             let days = ["Sun","Mon","Tues","Weds","Thur","Fri","Sat"]
+            
+            
+            let months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sept","Oct","Nov","Dec"];
+
+            time = date.getTime();
+            
+            return `${days[day]} | ${edate} ${months[month]} | ${time}`;
+          }
+
+          paraday.innerHTML = daysOfWeek();
+    
+      </script>
+</body>
+</html>
